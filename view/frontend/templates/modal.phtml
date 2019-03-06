@@ -1,0 +1,67 @@
+<?php
+/**
+ * @var \Buildateam\Quiz\Block\Quiz\Modal $block
+ */
+$isLoggedIn = $block->isCustomerLogged();
+//$isQuizNotRegister = $block->getCustomerRegisterCookie();
+//$quizIsNotFinished = $block->getQuizModalCookie();
+$isQuizNotRegister = empty($_COOKIE['bt-quiz-customer-register']);
+$quizIsNotFinished = empty($_COOKIE['bt-quiz-modal']);
+?>
+
+<?php if ($quizIsNotFinished && (!$isLoggedIn && $isQuizNotRegister) || ($isLoggedIn)): ?>
+    <div id="modal-wrapper-quiz">
+        <div id="bt-quiz" data-mage-init='{
+           "Quiz":{
+                "disableResponseMessaging": true,
+                "backButtonText": "< Back",
+                "nextQuestionText": "Next >",
+                "preventUnanswered": true,
+                "accountUrl": "<?php echo $block->getUrl('customer/account/create') ?>",
+                "displayEndBlock": false,
+                "saveResultUrl": "<?php echo $block->getUrl('quiz/index/savecustomeranswers') ?>",
+                "getQuizUrl": "<?php echo $block->getUrl('quiz/index/getquizajax') ?>",
+                "isLoggedIn": "<?php echo $isLoggedIn ?>",
+                "quizId": "<?php echo $block->getQuizId(); ?>"
+           }
+         }'>
+            <div class="quizName-wrapper"><h1 class="quizName"><!-- where the quiz name goes --></h1></div>
+            <div class="quizArea">
+                <div class="quizHeader">
+                    <!-- where the quiz main copy goes -->
+                    <a class="button startQuiz" href="#"><?php echo __('Take the quiz >') ?></a>
+                    <div class="quizFbLike">
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('quiz_fb_like_button')->toHtml() ?>
+                    </div>
+                </div>
+                <div class="questionsHeader">
+                    <h2><?php echo __('Profile') ?></h2>
+                    <p><?php echo __('Take Our Quick And Fun Quiz') ?></p>
+                </div>
+                <div class="message error">
+                    <p><?php echo __('You must select at least one answer.') ?></p>
+                </div>
+            </div>
+            <div class="quizEndBlock">
+            </div>
+            <div class="quizResults">
+                <h3 class="quizScore">You Scored: <span></span></h3>
+                <h3 class="quizLevel"><strong>Ranking:</strong> <span>></span></h3>
+                <div class="quizResultsCopy">
+
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "QuizBanner": {
+                "isLoggedIn": "<?php echo $isLoggedIn ?>",
+                "registerUrl": "<?php echo $block->getUrl('customer/account/create') ?>"
+            }
+        }
+    }
+</script>

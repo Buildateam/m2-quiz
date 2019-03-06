@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Buildateam\Quiz\Api\QuizRepositoryInterface" type="Buildateam\Quiz\Model\QuizRepository" />
+    <preference for="Buildateam\Quiz\Api\AnswerRepositoryInterface" type="Buildateam\Quiz\Model\AnswerRepository"/>
+    <preference for="Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface" type="Buildateam\Quiz\Model\CustomerAnswerRepository"/>
+    <preference for="Buildateam\Quiz\Api\AnswerRepositoryInterface" type="Buildateam\Quiz\Model\AnswerRepository" />
+    <virtualType name="QuizGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Buildateam\Quiz\Model\ResourceModel\Grid\Quiz\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">buildateam_quiz</argument>
+            <argument name="resourceModel" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Quiz</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Buildateam\Quiz\Model\ResourceModel\Grid\Quiz\Type\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">buildateam_quiz_questions_types</argument>
+            <argument name="resourceModel" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Question\Type</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Buildateam\Quiz\Model\ResourceModel\Grid\Question\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">buildateam_quiz_questions</argument>
+            <argument name="resourceModel" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Quiz</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="quiz_index_listing_data_source" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Grid\Quiz\Collection</item>
+                <item name="quiz_question_listing_data_source" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Question\Grid\Collection</item>
+                <item name="quiz_answer_listing_data_source" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Answer\Grid\Collection</item>
+                <item name="quiz_customer_answer_listing_data_source" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\CustomerAnswer\Grid\Collection</item>
+                <item name="quiz_question_type_listing_data_source" xsi:type="string">Buildateam\Quiz\Model\ResourceModel\Grid\Quiz\Type\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
