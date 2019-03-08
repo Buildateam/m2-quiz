@@ -37,6 +37,7 @@ class Modal extends \Magento\Framework\View\Element\Template
         $this->customerSession = $customerSession;
         $this->cookieManager = $cookieManager;
         $this->httpContext = $httpContext;
+        $this->_isScopePrivate = true;
         parent::__construct($context, $data);
     }
 

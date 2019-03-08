@@ -51,6 +51,7 @@ class Edit extends \Magento\Backend\App\Action
             }
         }
         $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Buildateam_Quiz::quiz_index');
         $resultPage->getConfig()->getTitle()->prepend(__('Answer'));
         $resultPage->getConfig()->getTitle()
             ->prepend($id ? __('Edit Answer') : __('New Answer'));

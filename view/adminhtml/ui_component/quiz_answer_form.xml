@@ -88,8 +88,8 @@
                     <item name="sortOrder" xsi:type="number">30</item>
                     <item name="source" xsi:type="string">buildateam_answer</item>
                     <item name="dataScope" xsi:type="string">attribute</item>
-                    <item name="notice" xsi:type="string">
-                        <![CDATA[Ex: sku=mv1309 or color[]=5&color[]=6&color[]=7. For more examples go to Catalog Search. ]]>
+                    <item name="additionalInfo" xsi:type="string">
+                        <![CDATA[Ex: sku=mv1309 or color[]=5&color[]=6&color[]=7. For more examples go to <a href="http://magento2-demo.nexcess.net/catalogsearch/advanced">Catalog Search Advanced</a>. ]]>
                     </item>
                 </item>
             </argument>

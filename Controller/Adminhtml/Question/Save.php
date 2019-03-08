@@ -54,8 +54,6 @@ class Save extends \Magento\Backend\App\Action
                 $this->repository->save($question->setData($data));
                 $this->messageManager->addSuccessMessage(__('Question saved successfully.'));
             } catch (\Exception $e) {
-                echo $e->getMessage();
-                die();
                 $this->messageManager->addErrorMessage(__('Error saving the question.'));
             }
         }
