@@ -5,9 +5,9 @@ define([
     'jquery/jquery-storageapi'
 ], function ($) {
     "use strict";
-
+    var vm = this;
     $.widget('bt.quizbanner', {
-        storage:              $.localStorage,
+        storage:              $.sessionStorage,
         $quizButton:          $('.quiz-button'),
         quizComplete:         $.cookie('bt-quiz-modal'),
         needCustomerRegister: $.cookie('bt-quiz-customer-register'),

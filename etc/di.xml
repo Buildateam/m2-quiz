@@ -6,7 +6,6 @@
     <preference for="Buildateam\Quiz\Api\QuizRepositoryInterface" type="Buildateam\Quiz\Model\QuizRepository" />
     <preference for="Buildateam\Quiz\Api\AnswerRepositoryInterface" type="Buildateam\Quiz\Model\AnswerRepository"/>
     <preference for="Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface" type="Buildateam\Quiz\Model\CustomerAnswerRepository"/>
-    <preference for="Buildateam\Quiz\Api\AnswerRepositoryInterface" type="Buildateam\Quiz\Model\AnswerRepository" />
     <virtualType name="QuizGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
         <arguments>
             <argument name="appliers" xsi:type="array">

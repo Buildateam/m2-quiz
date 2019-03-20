@@ -420,9 +420,9 @@
                 if (answerInputs.data('relation')) {
                     var relation = answerInputs.data('relation');
                     nextQuestion = $(_question + '[data-relation-id="' + relation + '"]');
-                } else if ($.localStorage.isSet(questionsNotSelectName)) {
+                } else if ($.sessionStorage.isSet(questionsNotSelectName)) {
 
-                    var questionsNotSelect = $.localStorage.get(questionsNotSelectName),
+                    var questionsNotSelect = $.sessionStorage.get(questionsNotSelectName),
                         startScan = false;
 
                     $(_question).each(function (indx, el) {
@@ -443,7 +443,7 @@
                     currentQuestion.fadeOut(300, function(){
 
                         /* Save last question to storage */
-                        $.localStorage.set('bt-quiz.lastQuestionId', nextQuestion.data('relation-id'));
+                        $.sessionStorage.set('bt-quiz.lastQuestionId', nextQuestion.data('relation-id'));
 
                         nextQuestion.find(_prevQuestionBtn).show().end().fadeIn(500);
                     });
@@ -462,9 +462,9 @@
 
                     var prevQuestion = questionLI.prev(_question);
 
-                    if ($.localStorage.get('bt-quiz') && $.localStorage.get(questionsNotSelectName)) {
+                    if ($.sessionStorage.get('bt-quiz') && $.sessionStorage.get(questionsNotSelectName)) {
 
-                        var questionsNotSelect = $.localStorage.get(questionsNotSelectName),
+                        var questionsNotSelect = $.sessionStorage.get(questionsNotSelectName),
                             startScan = false,
                             reverseQuestions = $(_question).get().reverse();
 

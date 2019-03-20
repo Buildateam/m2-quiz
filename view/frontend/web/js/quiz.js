@@ -32,7 +32,7 @@
         processedElements: ['.quiz-button'],
 
         /* Quiz Settings */
-        storage: $.localStorage,
+        storage: $.sessionStorage,
         expires: 365,
         quizStorageName: 'bt-quiz',
         questionsStorageName: 'bt-quiz.questions',
@@ -40,11 +40,13 @@
         customerRegisterCookie: 'bt-quiz-customer-register',
 
         _create: function () {
-            if (!this.storage.get('bt-quiz-show-first')) {
+            if (!this.quizLocalStorageDataManager.isCheckedQuiz(this.options.quizId)) {
                 this._initQuizAjax();
                 $('.products-grid').parent().parent().parent().hide();
                 $('.beauty-for-women').show();
-                this.storage.set('bt-quiz-show-first', true);
+                this.quizLocalStorageDataManager
+                    .pullCheckedQuiz(this.options.quizId)
+                    .save();
             }
 
             if (this._isQuizNotFinished()) {
@@ -116,7 +118,7 @@
         },
 
         _isQuizNotFinished: function () {
-            return !$.cookie('bt-quiz-modal');
+            return !$.cookie('bt-quiz-modal-'+this.options.quizId);
         },
 
         _scrollToTopPage: function () {
@@ -219,15 +221,16 @@
             $.post(this.options.saveResultUrl, data, function (response) {
                 if (response.success) {
                     $('.quiz-button').remove();
-                    $.cookie('bt-quiz-modal', '1', {expires: this.expires, path: '/'});
-
-                    if (response.url) {
-                        location.replace(response.url);
-                    }
+                    $.cookie('bt-quiz-modal-'+self.options.quizId, '1', {expires: this.expires, path: '/'});
                 } else {
                     self.storage.remove(self.quizStorageName);
                     $.cookie(self.customerRegisterCookie, '1', {expires: -1});
                 }
+
+                if (response.url) {
+                    location.replace(response.url);
+                }
+
             });
         },
 
@@ -243,6 +246,26 @@
             });
 
             return result;
+        },
+
+        quizLocalStorageDataManager: {
+            storage: $.localStorage,
+            quiz_data: $.localStorage.get('quiz_data') ? $.localStorage.get('quiz_data') : {
+                checkedQuestions: []
+            },
+            save: function() {
+                this.storage.set('quiz_data', this.quiz_data);
+                return this;
+            },
+            isCheckedQuiz: function(quizId) {
+                return this.quiz_data.checkedQuestions.includes(+quizId);
+            },
+            pullCheckedQuiz: function(quizId) {
+                this.quiz_data.checkedQuestions.push(+quizId);
+                return this;
+            }
+
+
         }
 
     });
