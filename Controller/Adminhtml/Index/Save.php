@@ -47,12 +47,13 @@ class Save extends \Magento\Backend\App\Action
             return $resultRedirect->setPath('*/*/');
         }
         $data = $this->getRequest()->getParams();
-
+        $quizId = null;
         if ($id = $this->getRequest()->getParam('entity_id')) {
             try {
                 $quiz = $this->quizRepository->getById($id);
                 $quiz->setData($data);
                 $this->quizRepository->save($quiz);
+                $quizId = $quiz->getId();
                 $this->messageManager->addSuccessMessage(__('Edited Quiz'));
             } catch (\Exception $e) {
                 $quiz = null;
@@ -64,11 +65,16 @@ class Save extends \Magento\Backend\App\Action
             $quiz = $this->quizFactory->create();
             try {
                 $this->quizRepository->save($quiz->setData($data));
+                $quizId = $quiz->getId();
                 $this->messageManager->addSuccessMessage(__('Quiz saved'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__('Error saving the quiz.'));
             }
         }
-        return $resultRedirect->setPath('*/*/index');
+        if($quizId && isset($data['back']) && $data['back'] == 'edit') {
+            return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId]);
+        } else {
+            return $resultRedirect->setPath('*/*/index');
+        }
     }
 }

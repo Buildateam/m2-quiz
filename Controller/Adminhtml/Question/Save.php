@@ -36,12 +36,15 @@ class Save extends \Magento\Backend\App\Action
             return $resultRedirect->setPath('*/*/');
         }
         $data = $this->getRequest()->getParams();
-        var_dump($data);
+        $questionId = null;
+        $quizId = null;
         if ($id = $this->getRequest()->getParam('entity_id')) {
             try {
                 $question = $this->repository->getById($id);
                 $question->setData($data);
                 $this->repository->save($question);
+                $questionId = $question->getId();
+                $quizId = $question->getData('quiz_id');
                 $this->messageManager->addSuccessMessage(__('Edited Question Successfully.'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__('Error editing the question.'));
@@ -52,11 +55,17 @@ class Save extends \Magento\Backend\App\Action
             $question = $this->questionFactory->create();
             try {
                 $this->repository->save($question->setData($data));
+                $questionId = $question->getId();
+                $quizId = $question->getData('quiz_id');
                 $this->messageManager->addSuccessMessage(__('Question saved successfully.'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__('Error saving the question.'));
             }
         }
-        return $resultRedirect->setPath('quiz/index/edit', ['quiz_id' => $data['quiz_id']]);
+        if($questionId && isset($data['back']) && $data['back'] == 'edit') {
+            return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId, 'question_id' => $questionId]);
+        } else {
+            return $resultRedirect->setPath('quiz/index/edit', ['quiz_id' => $quizId]);
+        }
     }
 }
