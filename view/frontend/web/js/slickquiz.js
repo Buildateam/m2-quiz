@@ -249,11 +249,10 @@
                         // If response messaging is disabled or hidden until the quiz is completed,
                         // make the nextQuestion button the checkAnswer button, as well
                         if (plugin.config.disableResponseMessaging || plugin.config.completionResponseMessaging) {
-                            questionHTML.append('<div class="progress"><span style="width: ' + procentProgress + '"></span></div>');
-                            questionHTML.append('<a href="' + penultimateUrl + '" class="button ' + nextClass + ' ' + checkClass + ' ' + penultimateClass + ' ' + classDone +'">' + btnText + '</a>');
+                            questionHTML.append('<a href="#" class="button ' + nextQuestionClass + ' ' + checkAnswerClass + '">' + plugin.config.nextQuestionText + '</a>');
                         } else {
-                            questionHTML.append('<a href="#" class="button ' + nextClass + ' ' + classDone +'">' + btnText + '</a>');
-                            questionHTML.append('<a href="#" class="button ' + checkClass + '">' + plugin.config.checkAnswerText + '</a>');
+                            questionHTML.append('<a href="#" class="button ' + nextQuestionClass + '">' + plugin.config.nextQuestionText + '</a>');
+                            questionHTML.append('<a href="#" class="button ' + checkAnswerClass + '">' + plugin.config.checkAnswerText + '</a>');
                         }
 
                         // Append question & answers to quiz
@@ -409,7 +408,8 @@
             nextQuestion: function(nextButton) {
                 var currentQuestion = $($(nextButton).parents(_question)[0]),
                     nextQuestion    = currentQuestion.next(_question),
-                    answerInputs    = currentQuestion.find('input:checked');
+                    answerInputs    = currentQuestion.find('input:checked'),
+                    nextQuestionLength = nextQuestion.length;
 
                 // If response messaging has been disabled or moved to completion,
                 // make sure we have an answer if we require it, let checkAnswer handle the alert messaging
@@ -439,7 +439,7 @@
                     });
                 }
 
-                if (nextQuestion.length) {
+                if (nextQuestionLength) {
                     currentQuestion.fadeOut(300, function(){
 
                         /* Save last question to storage */
@@ -462,7 +462,7 @@
 
                     var prevQuestion = questionLI.prev(_question);
 
-                    if ($.sessionStorage.get('bt-quiz') && $.sessionStorage.get(questionsNotSelectName)) {
+                    if ($.sessionStorage.get('bt-quiz'+plugin.config.quizId) && $.sessionStorage.get(questionsNotSelectName)) {
 
                         var questionsNotSelect = $.sessionStorage.get(questionsNotSelectName),
                             startScan = false,
@@ -526,23 +526,9 @@
 
             // Hides all questions, displays the final score and some conclusive information
             completeQuiz: function() {
-                $quizArea.fadeOut(300, function() {
-                    if (plugin.config.displayEndBlock) {
-                        $quizEndBlock.fadeIn(500);
-                    }
-
-                    if (plugin.config.displayQuizResult) {
-                        // If response messaging is set to show upon quiz completion, show it
-                        if (plugin.config.completionResponseMessaging && !plugin.config.disableResponseMessaging) {
-                            $(_element + ' input').prop('disabled', true);
-                            $(_element + ' .button:not(' + _tryAgainBtn + '), ' + _element + ' ' + _questionCount).hide();
-                            $(_element + ' ' + _question + ', ' + _element + ' ' + _responses).show();
-                            $quizResults.append($(_element + ' ' + _questions)).fadeIn(500);
-                        } else {
-                            $quizResults.fadeIn(500);
-                        }
-                    }
-                });
+                if(plugin.config.doneFx){
+                    plugin.config.doneFx(plugin.config.quizId);
+                }
             },
 
             // Compares selected responses with true answers, returns true if they match exactly

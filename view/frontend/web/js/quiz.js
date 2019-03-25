@@ -40,6 +40,8 @@
         customerRegisterCookie: 'bt-quiz-customer-register',
 
         _create: function () {
+            this.quizStorageName = this.quizStorageName + '-' + this.options.quizId;
+            this.questionsStorageName = this.options.quizId + '-' + this.questionsStorageName;
             if (!this.quizLocalStorageDataManager.isCheckedQuiz(this.options.quizId)) {
                 this._initQuizAjax();
                 $('.products-grid').parent().parent().parent().hide();
@@ -80,7 +82,14 @@
 
         _initQuizAjax: function () {
             var self = this;
-
+            self.options['doneFx'] = function (questionId) {
+                if ($(self.quizWrapperId + ' .message.error').is(':hidden')) {
+                    self._initClickEvents(self.processedElements);
+                    self.__saveQuestionsToStorage(questionId);
+                    self._saveResult();
+                    $(self.quizWrapperId).modal('closeModal');
+                }
+            };
             $.post(self.options.getQuizUrl, {id: self.options.quizId}, function (response) {
                 if (response.success) {
                     self.options['json'] = response.quiz;
@@ -156,6 +165,23 @@
                     }
                 }, 200);
             });
+        },
+
+        __saveQuestionsToStorage: function (questionId) {
+            this._removeQuestionsNotSelected();
+
+            /* Removal of old answers from question */
+            if (this.storage.isSet(this.questionsStorageName + '.' + questionId)) {
+                this.storage.remove(this.questionsStorageName + '.' + questionId);
+            }
+
+            /* Save all answers to storage from current question */
+            $(document).find('.answers li input:checked').each(function (indx, answer) {
+                var currentAnswerId = $(answer).data('id'),
+                    storagePath = [questionId, currentAnswerId].join('.');
+
+                this.storage.set(this.questionsStorageName + '.' + storagePath, true);
+            }.bind(this));
         },
 
         _saveQuestionsToStorage: function (target) {

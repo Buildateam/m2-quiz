@@ -95,7 +95,7 @@ class GetQuizAjax extends \Magento\Framework\App\Action\Action
                 /** \Buildateam\Quiz\Model\ResourceModel\Answer\Collection $collectionAnswer */
                 $collectionAnswer = $this->collectionAnswerFactory->create();
                 /** @var \Buildateam\Quiz\Model\Answer $answer */
-                foreach ($collectionAnswer as $answer) {
+                foreach ($collectionAnswer->getByQuestionId($question->getId()) as $answer) {
                     $quizQuestions['questions'][$question->getId()]['a'][] = [
                         'id'        => $answer->getId(),
                         'type'      => $question->getData('type_id'),
