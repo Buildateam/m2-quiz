@@ -64,6 +64,7 @@ class Save extends \Magento\Backend\App\Action
         $data['image'] = $image;
         $id = $this->getRequest()->getParam('entity_id');
         $questionId = $data['question_id'];
+        $quizId = $this->getRequest()->getParam('quiz_id');
         if ($id) {
             try {
                 $answer = $this->answerRepository->getById($id);
@@ -86,8 +87,15 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('Error saving the Answer.'));
             }
         }
-        return $resultRedirect->setPath('*/answer/edit', [
-            'answer_id' => $id, 'question_id'=> $questionId, '_current' => true
-        ]);
+        if($questionId && isset($data['back']) && $data['back'] == 'edit') {
+            return $resultRedirect->setPath('*/answer/edit', [
+                'answer_id' => $id, 'question_id'=> $questionId, '_current' => true
+            ]);
+        } else {
+            return $resultRedirect->setPath('*/question/edit', [
+                'quiz_id' => $quizId, 'question_id'=> $questionId, '_current' => true
+            ]);
+        }
+
     }
 }
