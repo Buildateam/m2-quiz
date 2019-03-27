@@ -4,7 +4,7 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Buildateam_Quiz::quiz" title="Buildateam QUiz" />
+                <resource id="Buildateam_Quiz::quiz_menu" title="Buildateam Quiz Menu" />
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">

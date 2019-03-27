@@ -3,8 +3,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Buildateam_Quiz::quiz" title="Quiz" module="Buildateam_Quiz" sortOrder="35" resource="Buildateam_Quiz::quiz"/>
-        <add id="Buildateam_Quiz::quiz_index" title="All Quizzes" module="Buildateam_Quiz" sortOrder="10" parent="Buildateam_Quiz::quiz" action="quiz/index" resource="Buildateam_Quiz::quiz_index"/>
-        <add id="Buildateam_Quiz::quiz_customer_answer" title="Customer Answers" module="Buildateam_Quiz" sortOrder="20" parent="Buildateam_Quiz::quiz" action="quiz/customer_answer" resource="Buildateam_Quiz::quiz_customer_answer"/>
-        <add id="Buildateam_Quiz::quiz_question_types" title="Questions Types" module="Buildateam_Quiz" sortOrder="30" parent="Buildateam_Quiz::quiz" action="quiz/question_type" resource="Buildateam_Quiz::quiz_question_types"/>
+        <add id="Buildateam_Quiz::quiz_index" title="All Quizzes" module="Buildateam_Quiz" sortOrder="10" parent="Buildateam_Quiz::quiz" action="quiz/index" resource="Buildateam_Quiz::quiz_menu"/>
+        <add id="Buildateam_Quiz::quiz_customer_answer" title="Customer Answers" module="Buildateam_Quiz" sortOrder="20" parent="Buildateam_Quiz::quiz" action="quiz/customer_answer" resource="Buildateam_Quiz::quiz_menu"/>
+        <add id="Buildateam_Quiz::quiz_question_types" title="Questions Types" module="Buildateam_Quiz" sortOrder="30" parent="Buildateam_Quiz::quiz" action="quiz/question_type" resource="Buildateam_Quiz::quiz_menu"/>
     </menu>
 </config>
