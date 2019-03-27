@@ -47,20 +47,14 @@ class SaveCustomerAnswers extends \Magento\Framework\App\Action\Action
     {
         $resultJson = $this->jsonFactory->create();
         $response = new \Magento\Framework\DataObject();
-        if (!$this->session->isLoggedIn()) {
-            $customerAnswer = $this->customerAnswerFactory->create();
-            $customerAnswer->setData('quiz_id', $this->getRequest()->getParam('quiz'));
-            $customerAnswer->setData('answers', serialize($this->getRequest()->getParam('answers')));
-            $response->setData('url', $customerAnswer->getResultUrl());
-            $response->setData('success', false);
-            $response->setData('message', __('Customer is not logged'));
-            $resultJson->setJsonData($response->toJson());
-            return $resultJson;
-        }
         if ($this->getRequest()->getParam('quiz') && $this->getRequest()->getParam('answers')) {
+            $customerId = null;
+            if ($this->session->isLoggedIn()) {
+                $customerId = $this->session->getCustomerId();
+            }
             /** @var \Buildateam\Quiz\Model\CustomerAnswer $customerAnswer */
             $customerAnswer = $this->customerAnswerFactory->create();
-            $customerAnswer->setData('customer_id', $this->session->getCustomerId());
+            $customerAnswer->setData('customer_id', $customerId);
             $customerAnswer->setData('quiz_id', $this->getRequest()->getParam('quiz'));
             $customerAnswer->setData('answers', serialize($this->getRequest()->getParam('answers')));
             try {

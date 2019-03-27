@@ -76,7 +76,8 @@ class GetQuizAjax extends \Magento\Framework\App\Action\Action
             $quizQuestions = [
                 'info' => [
                     'name' => $quiz->getData('title'),
-                    'main' => $quiz->getData('text')
+                    'main' => $quiz->getData('text'),
+                    'only_logged' => $quiz->getData('is_only_logged')
                 ],
                 'questions' => []
             ];
