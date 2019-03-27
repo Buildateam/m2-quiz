@@ -16,6 +16,10 @@
 }(function ($, _, ui, cookie, storageapi) {
     "use strict";
 
+    if(window['loadScript'] === undefined){
+        window['loadScript'] = false;
+    }
+
     $.widget('bt.quiz', {
         optionsModal: {
             buttons: [],
@@ -40,15 +44,14 @@
         customerRegisterCookie: 'bt-quiz-customer-register',
 
         _create: function () {
+            if(window['loadScript']===true) {
+                return;
+            }
+            window['loadScript'] = true;
             this.quizStorageName = this.quizStorageName + '-' + this.options.quizId;
             this.questionsStorageName = this.options.quizId + '-' + this.questionsStorageName;
             if (!this.quizLocalStorageDataManager.isCheckedQuiz(this.options.quizId)) {
-                this._initQuizAjax();
-                $('.products-grid').parent().parent().parent().hide();
-                $('.beauty-for-women').show();
-                this.quizLocalStorageDataManager
-                    .pullCheckedQuiz(this.options.quizId)
-                    .save();
+                this._initQuizAjax(true);
             }
 
             if (this._isQuizNotFinished()) {
@@ -69,6 +72,14 @@
             });
         },
 
+        _loadModal: function () {
+            $('.products-grid').parent().parent().parent().hide();
+            $('.beauty-for-women').show();
+            this.quizLocalStorageDataManager
+                .pullCheckedQuiz(this.options.quizId)
+                .save();
+        },
+
         _initQuiz: function () {
             if (this._isQuizNotFinished()) {
                 this._scrollToTopPage();
@@ -80,7 +91,7 @@
             }
         },
 
-        _initQuizAjax: function () {
+        _initQuizAjax: function (save) {
             var self = this;
             self.options['doneFx'] = function (questionId) {
                 if ($(self.quizWrapperId + ' .message.error').is(':hidden')) {
@@ -94,7 +105,13 @@
                 if (response.success) {
                     self.options['json'] = response.quiz;
                     $(self.element).slickQuiz(self.options);
-                    self._initQuiz();
+                    if(+response.quiz['info']['only_logged'] === 0) {
+                        self._loadModal();
+                        self._initQuiz();
+                    } else if(this.options && this.options.isLoggedIn) {
+                        self._loadModal();
+                        self._initQuiz();
+                    }
                 }
             });
         },
