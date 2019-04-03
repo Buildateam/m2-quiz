@@ -60,6 +60,12 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             null,
             ['nullable' => false, 'default' => '0'],
             'Is Only Loggd'
+        )->addColumn(
+            'type',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            ['nullable' => false],
+            'Type quiz or questionary'
         )->addIndex(
             $setup->getIdxName(
                 $installer->getTable('buildateam_quiz'),
