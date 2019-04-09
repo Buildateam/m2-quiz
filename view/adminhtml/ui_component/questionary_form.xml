@@ -16,7 +16,7 @@
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Questionary\Edit\BackButton</item>
             <item name="save_and_continue" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Questionary\Edit\SaveAndContinueButton</item>
-            <item name="add_question" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Quiz\Edit\AddNewQuestion</item>
+            <item name="add_question" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Questionary\Edit\AddNewQuestion</item>
             <item name="save" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Questionary\Edit\Save</item>
         </item>
     </argument>

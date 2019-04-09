@@ -65,7 +65,7 @@ class Save extends \Magento\Backend\App\Action
         if($questionId && isset($data['back']) && $data['back'] == 'edit') {
             return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId, 'question_id' => $questionId]);
         } else {
-            return $resultRedirect->setPath('quiz/index/edit', ['quiz_id' => $quizId]);
+            return $resultRedirect->setPath('quiz/questionary/edit', ['quiz_id' => $quizId]);
         }
     }
 }

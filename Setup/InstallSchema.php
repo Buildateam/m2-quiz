@@ -143,12 +143,6 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             null,
             ['nullable' => false, 'default' => '0'],
             'Quiz Questions Sort'
-        )->addColumn(
-            'input_type',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
-            ['nullable' => false],
-            'Input type'
         )->addIndex(
             $setup->getIdxName(
                 $installer->getTable('buildateam_quiz_questions'),
@@ -241,6 +235,12 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             null,
             ['nullable' => false, 'default' => '0'],
             'Quiz Answers Sort'
+        )->addColumn(
+            'input_type',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            ['nullable' => false],
+            'Input type'
         )->addIndex(
             $setup->getIdxName(
                 $installer->getTable('buildateam_quiz_answers'),
