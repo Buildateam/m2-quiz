@@ -28,7 +28,7 @@
             <argument name="requestFieldName" xsi:type="string">quiz_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="quiz/index/save"/>
+                    <item name="submit_url" xsi:type="url" path="quiz/questionary/save"/>
                 </item>
             </argument>
         </argument>
