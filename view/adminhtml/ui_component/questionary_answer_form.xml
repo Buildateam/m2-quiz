@@ -13,9 +13,9 @@
         </item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Answer\Edit\BackButton</item>
-            <item name="save_and_continue" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Answer\Edit\SaveAndContinueButton</item>
-            <item name="save" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\Answer\Edit\Save</item>
+            <item name="back" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\QuestionaryAnswer\Edit\BackButton</item>
+            <item name="save_and_continue" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\QuestionaryAnswer\Edit\SaveAndContinueButton</item>
+            <item name="save" xsi:type="string">Buildateam\Quiz\Block\Adminhtml\QuestionaryAnswer\Edit\Save</item>
         </item>
     </argument>
     <dataSource name="quiz_answer_form_data_source">
@@ -26,7 +26,7 @@
             <argument name="requestFieldName" xsi:type="string">answer_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="quiz/answer/save"/>
+                    <item name="submit_url" xsi:type="url" path="quiz/questionaryanswer/save"/>
                 </item>
             </argument>
         </argument>
