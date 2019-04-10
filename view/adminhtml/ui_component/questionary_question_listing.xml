@@ -121,7 +121,7 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Buildateam\Quiz\Ui\Component\Listing\Column\QuizQuestionActions">
+        <actionsColumn name="actions" class="Buildateam\Quiz\Ui\Component\Listing\Column\QuestionaryQuestionActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">entity_id</item>

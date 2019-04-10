@@ -1,7 +1,15 @@
 <?php
-namespace Buildateam\Quiz\Controller\Adminhtml\Question;
+/**
+ * Created by PhpStorm.
+ * User: ws10
+ * Date: 09-04-19
+ * Time: 05:53 PM
+ */
 
-class Save extends \Magento\Backend\App\Action
+namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion;
+
+
+class Save  extends \Magento\Backend\App\Action
 {
     /**
      * @var \Buildateam\Quiz\Model\QuestionRepository
@@ -65,7 +73,7 @@ class Save extends \Magento\Backend\App\Action
         if($questionId && isset($data['back']) && $data['back'] == 'edit') {
             return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId, 'question_id' => $questionId]);
         } else {
-            return $resultRedirect->setPath('quiz/index/edit', ['quiz_id' => $quizId]);
+            return $resultRedirect->setPath('quiz/questionary/edit', ['quiz_id' => $quizId]);
         }
     }
 }
