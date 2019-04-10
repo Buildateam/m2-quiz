@@ -4,7 +4,7 @@
     <body>
         <referenceContainer name="content">
             <uiComponent name="questionary_question_form" />
-            <uiComponent name="quiz_answer_listing" />
+            <uiComponent name="questionary_answer_listing" />
         </referenceContainer>
     </body>
 </page>
