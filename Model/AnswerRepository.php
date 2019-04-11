@@ -1,6 +1,7 @@
 <?php
 namespace Buildateam\Quiz\Model;
 
+use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
@@ -58,7 +59,12 @@ class AnswerRepository implements \Buildateam\Quiz\Api\AnswerRepositoryInterface
      */
     public function delete(\Buildateam\Quiz\Model\Answer $answer)
     {
-        // TODO: Implement delete() method.
+        try {
+            $this->resource->delete($answer);
+        } catch (\Exception $exception) {
+            throw new CouldNotDeleteException(__($exception->getMessage()));
+        }
+        return true;
     }
 
     /**
@@ -66,6 +72,6 @@ class AnswerRepository implements \Buildateam\Quiz\Api\AnswerRepositoryInterface
      */
     public function deleteById($answerId)
     {
-        // TODO: Implement deleteById() method.
+        return $this->delete($this->getById($answerId));
     }
 }

@@ -94,16 +94,16 @@
                 </item>
             </argument>
         </field>
-        <field name="relation_id">
+        <field name="input_type">
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Buildateam\Quiz\Ui\Component\Listing\Column\Answer\QuestionOptions</item>
+                <item name="options" xsi:type="object">Buildateam\Quiz\Ui\Component\Listing\Column\Answer\InputType</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Relation question</item>
+                    <item name="label" xsi:type="string" translate="true">Input Type</item>
                     <item name="formElement" xsi:type="string">select</item>
                     <item name="sortOrder" xsi:type="number">40</item>
                     <item name="source" xsi:type="string">buildateam_answer</item>
-                    <item name="dataScope" xsi:type="string">relation_id</item>
+                    <item name="dataScope" xsi:type="string">input_type</item>
                     <item name="notice" xsi:type="string">
                         If the Question is the type Multiple.
                     </item>
@@ -113,32 +113,15 @@
                 </item>
             </argument>
         </field>
-        <field name="image">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">string</item>
-                    <item name="source" xsi:type="string">buildateam_answer</item>
-                    <item name="label" xsi:type="string" translate="true">Image</item>
-                    <item name="visible" xsi:type="boolean">true</item>
-                    <item name="formElement" xsi:type="string">fileUploader</item>
-                    <item name="sortOrder" xsi:type="number">40</item>
-                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
-                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
-                    <item name="uploaderConfig" xsi:type="array">
-                        <item name="url" xsi:type="url" path="*/*/upload"/>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="color">
+        <field name="values">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Color</item>
+                    <item name="label" xsi:type="string" translate="true">Values</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                     <item name="source" xsi:type="string">buildateam_answer</item>
-                    <item name="dataScope" xsi:type="string">color</item>
+                    <item name="dataScope" xsi:type="string">values</item>
                 </item>
             </argument>
         </field>

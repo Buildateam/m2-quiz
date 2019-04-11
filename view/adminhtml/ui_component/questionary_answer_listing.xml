@@ -131,7 +131,7 @@
                 </item>
             </argument>
         </column>
-        <column name="attribute">
+        <column name="input_type">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -141,12 +141,12 @@
                         </item>
                     </item>
                     <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Attribute</item>
+                    <item name="label" xsi:type="string" translate="true">Input type</item>
                     <item name="sortOrder" xsi:type="number">30</item>
                 </item>
             </argument>
         </column>
-        <column name="color">
+        <column name="values">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editor" xsi:type="array">
@@ -156,20 +156,8 @@
                         </item>
                     </item>
                     <item name="filter" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Color</item>
+                    <item name="label" xsi:type="string" translate="true">Values</item>
                     <item name="sortOrder" xsi:type="number">40</item>
-                </item>
-            </argument>
-        </column>
-        <column name="image" class="Buildateam\Quiz\Ui\Component\Listing\Column\Answer\Image">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
-                    <item name="sortable" xsi:type="boolean">false</item>
-                    <item name="altField" xsi:type="string">Image Answer</item>
-                    <item name="has_preview" xsi:type="string">0</item>
-                    <item name="label" xsi:type="string" translate="true">Image</item>
-                    <item name="sortOrder" xsi:type="number">50</item>
                 </item>
             </argument>
         </column>

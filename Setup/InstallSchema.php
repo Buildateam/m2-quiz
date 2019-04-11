@@ -241,6 +241,12 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             255,
             ['nullable' => false],
             'Input type'
+        )->addColumn(
+            'values',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            ['nullable' => false],
+            'Input values'
         )->addIndex(
             $setup->getIdxName(
                 $installer->getTable('buildateam_quiz_answers'),
