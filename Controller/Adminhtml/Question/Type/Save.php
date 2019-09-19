@@ -17,20 +17,18 @@ class Save extends \Magento\Backend\App\Action
     protected $questionTypeFactory;
     /**
      * Save constructor.
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Buildateam\Quiz\Model\QuestionTypeRepository $questionTypeRepository
      * @param \Buildateam\Quiz\Model\Question\TypeFactory $questionTypeFactory
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Buildateam\Quiz\Model\QuestionTypeRepository $questionTypeRepository,
         \Buildateam\Quiz\Model\Question\TypeFactory $questionTypeFactory,
         \Magento\Backend\App\Action\Context $context
     ) {
         parent::__construct($context);
         $this->questionTypeRepository = $questionTypeRepository;
-        $this->formKeyValidator = $formKeyValidator;
+        $this->formKeyValidator = $context->getFormKeyValidator();
         $this->questionTypeFactory = $questionTypeFactory;
     }
     /**

@@ -28,20 +28,18 @@ class Save  extends \Magento\Backend\App\Action
 
     /**
      * Save constructor.
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Buildateam\Quiz\Model\QuizRepository $quizRepository
      * @param \Buildateam\Quiz\Model\QuizFactory $quizFactory
      */
     public function __construct(
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
         \Magento\Backend\App\Action\Context $context,
         \Buildateam\Quiz\Model\QuizRepository $quizRepository,
         \Buildateam\Quiz\Model\QuizFactory $quizFactory
     ) {
         parent::__construct($context);
         $this->quizRepository = $quizRepository;
-        $this->formKeyValidator = $formKeyValidator;
+        $this->formKeyValidator = $context->getFormKeyValidator();
         $this->quizFactory = $quizFactory;
     }
 
