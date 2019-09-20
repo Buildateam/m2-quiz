@@ -4,7 +4,7 @@
 <script type="text/x-magento-init">
     {
         "*": {
-            "QuizAccount": { "url":"<?php echo $block->getUrl() ?>" }
+            "QuizAccount": { "url":"<?= $block->escapeHtml($block->getUrl()) ?>" }
         }
     }
 </script>

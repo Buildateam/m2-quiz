@@ -17,29 +17,29 @@ $quizIsNotFinished = empty($_COOKIE['bt-quiz-modal']);
                 "backButtonText": "< Back",
                 "nextQuestionText": "Next >",
                 "preventUnanswered": true,
-                "accountUrl": "<?php echo $block->getUrl('customer/account/create') ?>",
+                "accountUrl": "<?= $block->escapeHtml($block->getUrl('customer/account/create')) ?>",
                 "displayEndBlock": false,
-                "saveResultUrl": "<?php echo $block->getUrl('quiz/index/savecustomeranswers') ?>",
-                "getQuizUrl": "<?php echo $block->getUrl('quiz/index/getquizajax') ?>",
-                "isLoggedIn": "<?php echo $isLoggedIn ?>",
-                "quizId": "<?php echo $block->getQuizId(); ?>"
+                "saveResultUrl": "<?= $block->escapeHtml($block->getUrl('quiz/index/savecustomeranswers')) ?>",
+                "getQuizUrl": "<?= $block->escapeHtml($block->getUrl('quiz/index/getquizajax')) ?>",
+                "isLoggedIn": "<?= $block->escapeHtml($isLoggedIn) ?>",
+                "quizId": "<?= $block->escapeHtml($block->getQuizId()); ?>"
            }
          }'>
             <div class="quizName-wrapper"><h1 class="quizName"><!-- where the quiz name goes --></h1></div>
             <div class="quizArea">
                 <div class="quizHeader">
                     <!-- where the quiz main copy goes -->
-                    <a class="button startQuiz" href="#"><?php echo __('Take the quiz >') ?></a>
+                    <a class="button startQuiz" href="#"><?= $block->escapeHtml(__('Take the quiz >')) ?></a>
                     <div class="quizFbLike">
-                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('quiz_fb_like_button')->toHtml() ?>
+                        <?= $block->escapeHtml($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('quiz_fb_like_button')->toHtml()) ?>
                     </div>
                 </div>
                 <div class="questionsHeader">
-                    <h2><?php echo __('Profile') ?></h2>
-                    <p><?php echo __('Take Our Quick And Fun Quiz') ?></p>
+                    <h2><?= $block->escapeHtml(__('Profile')) ?></h2>
+                    <p><?= $block->escapeHtml(__('Take Our Quick And Fun Quiz')) ?></p>
                 </div>
                 <div class="message error">
-                    <p><?php echo __('You must select at least one answer.') ?></p>
+                    <p><?= $block->escapeHtml(__('You must select at least one answer.')) ?></p>
                 </div>
             </div>
             <div class="quizEndBlock">
@@ -59,9 +59,10 @@ $quizIsNotFinished = empty($_COOKIE['bt-quiz-modal']);
     {
         "*": {
             "QuizBanner": {
-                "isLoggedIn": "<?php echo $isLoggedIn ?>",
-                "registerUrl": "<?php echo $block->getUrl('customer/account/create') ?>"
+                "isLoggedIn": "<?= $block->escapeHtml($isLoggedIn) ?>",
+                "registerUrl": "<?= $block->escapeHtml($block->getUrl('customer/account/create')) ?>"
             }
         }
     }
+
 </script>
