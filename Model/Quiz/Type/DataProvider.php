@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Model\Quiz\Type;
 
 use Buildateam\Quiz\Model\ResourceModel\Question\Type\CollectionFactory;
@@ -58,6 +59,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     {
         return $meta;
     }
+
     /**
      * Get data
      *

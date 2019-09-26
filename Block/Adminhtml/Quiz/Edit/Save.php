@@ -1,9 +1,14 @@
 <?php
+
 namespace Buildateam\Quiz\Block\Adminhtml\Quiz\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Block\Adminhtml\Quiz\Edit
+ */
 class Save extends GenericButton implements ButtonProviderInterface
 {
     /**

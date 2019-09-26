@@ -1,8 +1,13 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Answer;
 
 use Magento\Backend\App\Action;
 
+/**
+ * Class Delete
+ * @package Buildateam\Quiz\Controller\Adminhtml\Answer
+ */
 class Delete extends Action
 {
     /**
@@ -56,7 +61,7 @@ class Delete extends Action
             if ($answerModel->getData('image')) {
                 $this->filesystem
                     ->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)
-                    ->delete('quiz/'.$answerModel->getData('image'));
+                    ->delete('quiz/' . $answerModel->getData('image'));
             }
             $this->resourceAnswer->delete($answerModel);
             $this->messageManager->addSuccessMessage(__('Answer deleted'));

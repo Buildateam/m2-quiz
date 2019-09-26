@@ -7,6 +7,10 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class QuizQuestionTypeActions
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column
+ */
 class QuizQuestionTypeActions extends Column
 {
     protected $urlBuilder;

@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Question\Type;
 
+/**
+ * Class Delete
+ * @package Buildateam\Quiz\Controller\Adminhtml\Question\Type
+ */
 class Delete extends \Magento\Backend\App\Action
 {
     protected $_model;

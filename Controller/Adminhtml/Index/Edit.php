@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Index;
 
+/**
+ * Class Edit
+ * @package Buildateam\Quiz\Controller\Adminhtml\Index
+ */
 class Edit extends \Magento\Backend\App\Action
 {
     /**
@@ -17,6 +22,7 @@ class Edit extends \Magento\Backend\App\Action
      * @var \Buildateam\Quiz\Model\quizRepository
      */
     protected $quizRepository;
+
     /**
      * Edit constructor.
      * @param \Magento\Backend\App\Action\Context $context
@@ -35,6 +41,7 @@ class Edit extends \Magento\Backend\App\Action
         $this->quizRepository = $quizRepository;
         parent::__construct($context);
     }
+
     /**
      * {@inheritdoc}
      */

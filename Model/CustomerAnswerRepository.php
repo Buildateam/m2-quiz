@@ -1,9 +1,14 @@
 <?php
+
 namespace Buildateam\Quiz\Model;
 
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class CustomerAnswerRepository
+ * @package Buildateam\Quiz\Model
+ */
 class CustomerAnswerRepository implements \Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface
 {
     /**
@@ -15,6 +20,7 @@ class CustomerAnswerRepository implements \Buildateam\Quiz\Api\CustomerAnswerRep
      * @var CustomerAnswerFactory
      */
     protected $customerAnswerFactory;
+
     /**
      * QuestionRepository constructor.
      * @param ResourceModel\CustomerAnswer $resource

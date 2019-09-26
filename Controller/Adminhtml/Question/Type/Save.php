@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Question\Type;
 
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Controller\Adminhtml\Question\Type
+ */
 class Save extends \Magento\Backend\App\Action
 {
     /**
@@ -15,6 +20,7 @@ class Save extends \Magento\Backend\App\Action
      * @var \Buildateam\Quiz\Model\Question\TypeFactory
      */
     protected $questionTypeFactory;
+
     /**
      * Save constructor.
      * @param \Buildateam\Quiz\Model\QuestionTypeRepository $questionTypeRepository
@@ -31,6 +37,7 @@ class Save extends \Magento\Backend\App\Action
         $this->formKeyValidator = $context->getFormKeyValidator();
         $this->questionTypeFactory = $questionTypeFactory;
     }
+
     /**
      * {@inheritdoc}
      */

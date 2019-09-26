@@ -31,7 +31,7 @@ $quizIsNotFinished = empty($_COOKIE['bt-quiz-modal']);
                     <!-- where the quiz main copy goes -->
                     <a class="button startQuiz" href="#"><?= $block->escapeHtml(__('Take the quiz >')) ?></a>
                     <div class="quizFbLike">
-                        <?= $block->escapeHtml($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('quiz_fb_like_button')->toHtml()) ?>
+                        <?= $block->escapeHtml($block->getLayout()->createBlock(\Magento\Cms\Block\Block::class)->setBlockId('quiz_fb_like_button')->toHtml()) ?>
                     </div>
                 </div>
                 <div class="questionsHeader">
@@ -64,5 +64,6 @@ $quizIsNotFinished = empty($_COOKIE['bt-quiz-modal']);
             }
         }
     }
+
 
 </script>

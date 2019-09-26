@@ -1,7 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Model\ResourceModel\CustomerAnswer;
 
-
+/**
+ * Class Collection
+ * @package Buildateam\Quiz\Model\ResourceModel\CustomerAnswer
+ */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected $_idFieldName = \Buildateam\Quiz\Model\CustomerAnswer::ANSWER_ID;
@@ -11,6 +15,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         $this->_init('Buildateam\Quiz\Model\CustomerAnswer',
             'Buildateam\Quiz\Model\ResourceModel\CustomerAnswer');
     }
+
     /**
      * @param $column
      * @return $this
@@ -21,7 +26,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             if ($column->getId() == 'customer_id') {
                 $customerName = $column->getFilter()->getValue();
                 if (!empty($customerEmail)) {
-                    $this->getCollection()->addFieldToFilter('ce.firstname', array('like' => '%' . $customerName . '%'))->addFieldToFilter('ce.lastname', array('like' => '%' . $customerName . '%'));
+                    $this->getCollection()
+                        ->addFieldToFilter('ce.firstname', ['like' => '%' . $customerName . '%'])
+                        ->addFieldToFilter('ce.lastname', ['like' => '%' . $customerName . '%']);
                 }
             }
         } else {

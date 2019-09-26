@@ -1,10 +1,15 @@
 <?php
+
 namespace Buildateam\Quiz\Setup;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 
+/**
+ * Class InstallSchema
+ * @package Buildateam\Quiz\Setup
+ */
 class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 {
     /**
@@ -135,7 +140,7 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             'multiple',
             \Magento\Framework\DB\Ddl\Table::TYPE_BOOLEAN,
             null,
-            [ 'nullable' => false, 'default' => 0 ],
+            ['nullable' => false, 'default' => 0],
             'Quiz Questions Multiple'
         )->addColumn(
             'sort',

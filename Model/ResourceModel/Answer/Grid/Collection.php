@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Model\ResourceModel\Answer\Grid;
 
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
@@ -7,6 +8,10 @@ use Magento\Framework\Event\ManagerInterface as EventManager;
 use Psr\Log\LoggerInterface as Logger;
 use Magento\Framework\App\RequestInterface;
 
+/**
+ * Class Collection
+ * @package Buildateam\Quiz\Model\ResourceModel\Answer\Grid
+ */
 class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
 {
     /**
@@ -34,7 +39,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         $mainTable = 'buildateam_quiz_answers',
         $resourceModel = \Buildateam\Quiz\Model\ResourceModel\Question::class
     ) {
-        $this->request =  $request;
+        $this->request = $request;
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $mainTable, $resourceModel);
     }
 

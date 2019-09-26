@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\Questionary;
 
-
+/**
+ * Class NewQuestionary
+ * @package Buildateam\Quiz\Controller\Adminhtml\Questionary
+ */
 class NewQuestionary extends \Magento\Backend\App\Action
 {
 
@@ -16,6 +19,7 @@ class NewQuestionary extends \Magento\Backend\App\Action
      * @var \Magento\Backend\Model\View\Result\ForwardFactory
      */
     protected $resultForwardFactory;
+
     /**
      * NewAction constructor.
      * @param \Magento\Backend\App\Action\Context $context
@@ -28,6 +32,7 @@ class NewQuestionary extends \Magento\Backend\App\Action
         $this->resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
     }
+
     /**
      * {@inheritdoc}
      */

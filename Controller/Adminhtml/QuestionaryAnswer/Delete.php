@@ -11,6 +11,10 @@ namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer;
 use Buildateam\Quiz\Model\AnswerRepository;
 use Magento\Backend\App\Action;
 
+/**
+ * Class Delete
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer
+ */
 class Delete extends Action
 {
     /**

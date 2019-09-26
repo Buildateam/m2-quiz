@@ -1,6 +1,10 @@
 <?php
 namespace Buildateam\Quiz\Controller\Adminhtml\Index;
 
+/**
+ * Class Index
+ * @package Buildateam\Quiz\Controller\Adminhtml\Index
+ */
 class Index extends \Magento\Backend\App\Action
 {
     /**

@@ -1,17 +1,26 @@
 <?php
+
 namespace Buildateam\Quiz\Model\ResourceModel\Question;
 
+/**
+ * Class Collection
+ * @package Buildateam\Quiz\Model\ResourceModel\Question
+ */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected $_idFieldName = \Buildateam\Quiz\Model\Question::QUESTION_ID;
+
     /**
      * {@inheritdoc}
      */
     protected function _construct()
     {
-        $this->_init('Buildateam\Quiz\Model\Question',
-            'Buildateam\Quiz\Model\ResourceModel\Question');
+        $this->_init(
+            \Buildateam\Quiz\Model\Question::class,
+            \Buildateam\Quiz\Model\ResourceModel\Question::class
+        );
     }
+
     /**
      * @param int $quizId
      * @return $this

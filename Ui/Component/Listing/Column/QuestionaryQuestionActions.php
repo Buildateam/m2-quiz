@@ -13,6 +13,10 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class QuestionaryQuestionActions
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column
+ */
 class QuestionaryQuestionActions extends Column
 {
     /**

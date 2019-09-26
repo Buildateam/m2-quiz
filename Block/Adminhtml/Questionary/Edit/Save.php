@@ -11,6 +11,10 @@ namespace Buildateam\Quiz\Block\Adminhtml\Questionary\Edit;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Block\Adminhtml\Questionary\Edit
+ */
 class Save extends GenericButton implements ButtonProviderInterface
 {
     /**

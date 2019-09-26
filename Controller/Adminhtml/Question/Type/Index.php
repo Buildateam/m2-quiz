@@ -2,8 +2,15 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\Question\Type;
 
+/**
+ * Class Index
+ * @package Buildateam\Quiz\Controller\Adminhtml\Question\Type
+ */
 class Index extends \Magento\Backend\App\Action
 {
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     public function __construct(

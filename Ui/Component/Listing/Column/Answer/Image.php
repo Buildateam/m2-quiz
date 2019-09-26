@@ -1,9 +1,14 @@
 <?php
+
 namespace Buildateam\Quiz\Ui\Component\Listing\Column\Answer;
 
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
+/**
+ * Class Image
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column\Answer
+ */
 class Image extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
@@ -17,6 +22,7 @@ class Image extends \Magento\Ui\Component\Listing\Columns\Column
      * @var \Magento\Framework\UrlInterface
      */
     protected $urlBuilder;
+
     /**
      * Image constructor.
      * @param ContextInterface $context
@@ -53,7 +59,7 @@ class Image extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as & $item) {
                 $mediaRelativePath = $this->storeManager->getStore()
                     ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
-                $logoPath  = $mediaRelativePath.'quiz/'.$item['image'];
+                $logoPath = $mediaRelativePath . 'quiz/' . $item['image'];
                 $item[$fieldName . '_src'] = $logoPath;
                 $item[$fieldName . '_alt'] = $this->getAlt($item);
                 $item[$fieldName . '_orig_src'] = $logoPath;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Model\Quiz\Answer;
 
 use Buildateam\Quiz\Model\ResourceModel\Answer\CollectionFactory;
@@ -71,6 +72,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     {
         return $meta;
     }
+
     /**
      * Get data
      *
@@ -82,13 +84,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         if (isset($this->loadedData)) {
             return $this->loadedData;
         }
-        $baseUrl =  $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        $baseUrl = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
         $items = $this->collection->getItems();
         /** @var $answer \Buildateam\Quiz\Model\Answer */
         foreach ($items as $answer) {
             $data = $answer->getData();
             $image[0]['image'] = $data['image'];
-            $image[0]['url'] = $baseUrl.'quiz/'.$data['image'];
+            $image[0]['url'] = $baseUrl . 'quiz/' . $data['image'];
             $data['image'] = $image;
             $this->loadedData[$answer->getId()] = $data;
         }

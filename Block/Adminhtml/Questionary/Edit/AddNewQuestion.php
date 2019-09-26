@@ -11,6 +11,10 @@ namespace Buildateam\Quiz\Block\Adminhtml\Questionary\Edit;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class AddNewQuestion
+ * @package Buildateam\Quiz\Block\Adminhtml\Questionary\Edit
+ */
 class AddNewQuestion extends GenericButton implements ButtonProviderInterface
 {
     /**
@@ -23,7 +27,13 @@ class AddNewQuestion extends GenericButton implements ButtonProviderInterface
             return [
                 'label' => __('Add New Question'),
                 'class' => 'reset add-new-question',
-                'on_click' => sprintf("location.href = '%s';", $this->getUrl('*/questionaryQuestion/newQuestion', ['quiz_id' => $quizId])),
+                'on_click' => sprintf(
+                    "location.href = '%s';",
+                    $this->getUrl(
+                        '*/questionaryQuestion/newQuestion',
+                        ['quiz_id' => $quizId]
+                    )
+                ),
                 'sort_order' => 60,
             ];
         }

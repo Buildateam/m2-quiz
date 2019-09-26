@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Ui\Component\Listing\Column\QuestionType;
 
+/**
+ * Class Options
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column\QuestionType
+ */
 class Options implements \Magento\Framework\Data\OptionSourceInterface
 {
     /**

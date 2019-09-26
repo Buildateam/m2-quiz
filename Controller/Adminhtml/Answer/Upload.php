@@ -1,8 +1,13 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Answer;
 
 use Magento\Framework\Controller\ResultFactory;
 
+/**
+ * Class Upload
+ * @package Buildateam\Quiz\Controller\Adminhtml\Answer
+ */
 class Upload extends \Magento\Newsletter\Controller\Adminhtml\Template
 {
     /**

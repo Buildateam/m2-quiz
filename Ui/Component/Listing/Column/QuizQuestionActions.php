@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -6,6 +7,10 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class QuizQuestionActions
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column
+ */
 class QuizQuestionActions extends Column
 {
     /**
@@ -45,7 +50,7 @@ class QuizQuestionActions extends Column
                     'href' => $this->urlBuilder->getUrl(
                         'quiz/question/delete',
                         [
-                            'question_id' => $item['entity_id'] ,
+                            'question_id' => $item['entity_id'],
                             'quiz_id' => $item['quiz_id']
                         ]
                     ),

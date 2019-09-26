@@ -1,10 +1,15 @@
 <?php
+
 namespace Buildateam\Quiz\Model;
 
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class QuestionRepository
+ * @package Buildateam\Quiz\Model
+ */
 class QuestionRepository implements \Buildateam\Quiz\Api\QuestionRepositoryInterface
 {
     /**
@@ -16,6 +21,7 @@ class QuestionRepository implements \Buildateam\Quiz\Api\QuestionRepositoryInter
      * @var QuestionFactory
      */
     protected $questionFactory;
+
     /**
      * QuestionRepository constructor.
      * @param ResourceModel\Question $resource

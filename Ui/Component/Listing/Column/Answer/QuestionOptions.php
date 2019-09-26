@@ -3,6 +3,10 @@ namespace Buildateam\Quiz\Ui\Component\Listing\Column\Answer;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class QuestionOptions
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column\Answer
+ */
 class QuestionOptions implements \Magento\Framework\Data\OptionSourceInterface
 {
     /**

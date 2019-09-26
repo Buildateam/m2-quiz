@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Ui\Component\Listing\Column\Answer;
 
-
+/**
+ * Class InputType
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column\Answer
+ */
 class InputType implements \Magento\Framework\Data\OptionSourceInterface
 {
 

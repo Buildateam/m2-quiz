@@ -4,6 +4,10 @@ namespace Buildateam\Quiz\Api;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Interface QuestionTypeRepositoryInterface
+ * @package Buildateam\Quiz\Api
+ */
 interface QuestionTypeRepositoryInterface
 {
     /**

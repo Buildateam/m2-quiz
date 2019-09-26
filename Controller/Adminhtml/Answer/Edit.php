@@ -1,12 +1,17 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Answer;
 
+/**
+ * Class Edit
+ * @package Buildateam\Quiz\Controller\Adminhtml\Answer
+ */
 class Edit extends \Magento\Backend\App\Action
 {
     /**
      * @var \Magento\Framework\Registry
      */
-    protected $registry ;
+    protected $registry;
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
@@ -15,6 +20,7 @@ class Edit extends \Magento\Backend\App\Action
      * @var \Buildateam\Quiz\Model\AnswerRepository
      */
     protected $answerRepository;
+
     /**
      * Edit constructor.
      * @param \Magento\Backend\App\Action\Context $context

@@ -8,8 +8,11 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion;
 
-
-class Save  extends \Magento\Backend\App\Action
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion
+ */
+class Save extends \Magento\Backend\App\Action
 {
     /**
      * @var \Buildateam\Quiz\Model\QuestionRepository
@@ -19,6 +22,7 @@ class Save  extends \Magento\Backend\App\Action
      * @var \Buildateam\Quiz\Model\QuestionFactory
      */
     protected $questionFactory;
+
     /**
      * Save constructor.
      * @param \Magento\Backend\App\Action\Context $context
@@ -34,6 +38,7 @@ class Save  extends \Magento\Backend\App\Action
         $this->repository = $repository;
         $this->questionFactory = $questionFactory;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -70,7 +75,7 @@ class Save  extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('Error saving the question.'));
             }
         }
-        if($questionId && isset($data['back']) && $data['back'] == 'edit') {
+        if ($questionId && isset($data['back']) && $data['back'] == 'edit') {
             return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId, 'question_id' => $questionId]);
         } else {
             return $resultRedirect->setPath('quiz/questionary/edit', ['quiz_id' => $quizId]);

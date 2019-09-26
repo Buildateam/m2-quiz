@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -6,12 +7,17 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class AnswerActions
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column
+ */
 class AnswerActions extends Column
 {
     /**
      * @var UrlInterface
      */
     protected $urlBuilder;
+
     /**
      * QuizIndexActions constructor.
      * @param ContextInterface $context

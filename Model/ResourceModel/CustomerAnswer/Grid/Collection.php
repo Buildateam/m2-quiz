@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Model\ResourceModel\CustomerAnswer\Grid;
 
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
@@ -7,6 +8,10 @@ use Magento\Framework\Event\ManagerInterface as EventManager;
 use Psr\Log\LoggerInterface as Logger;
 use Magento\Framework\App\RequestInterface;
 
+/**
+ * Class Collection
+ * @package Buildateam\Quiz\Model\ResourceModel\CustomerAnswer\Grid
+ */
 class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
 {
     /**
@@ -34,7 +39,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         $mainTable = 'buildateam_quiz_customer_answers',
         $resourceModel = \Buildateam\Quiz\Model\ResourceModel\CustomerAnswer::class
     ) {
-        $this->request =  $request;
+        $this->request = $request;
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $mainTable, $resourceModel);
     }
 
@@ -47,15 +52,15 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         $customerAliasName = 'customer';
         $this->getSelect()->joinLeft(
             [$quizAliasName => $this->getTable('buildateam_quiz')],
-            $quizAliasName.'.entity_id = main_table.quiz_id',
-            ['quiz_title' => $quizAliasName.'.title' ]
+            $quizAliasName . '.entity_id = main_table.quiz_id',
+            ['quiz_title' => $quizAliasName . '.title']
         )->joinLeft(
             [$customerAliasName => $this->getTable('customer_entity')],
-            $customerAliasName.'.entity_id = main_table.customer_id',
+            $customerAliasName . '.entity_id = main_table.customer_id',
             [
                 'customer_name' =>
                     new \Zend_Db_Expr("CONCAT({$customerAliasName}.firstname, ' ', {$customerAliasName}.lastname)"),
-                'customer_email' => $customerAliasName.'.email'
+                'customer_email' => $customerAliasName . '.email'
             ]
         );
         return parent::_beforeLoad();
