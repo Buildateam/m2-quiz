@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer;
 
-
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer
+ */
 class Save extends \Magento\Backend\App\Action
 {
     /**
@@ -93,15 +96,18 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('Error saving the Answer.'));
             }
         }
-        if($questionId && isset($data['back']) && $data['back'] == 'edit') {
+        if ($questionId && isset($data['back']) && $data['back'] == 'edit') {
             return $resultRedirect->setPath('*/questionaryanswer/edit', [
-                'answer_id' => $id, 'question_id'=> $questionId, '_current' => true
+                'answer_id' => $id,
+                'question_id' => $questionId,
+                '_current' => true
             ]);
         } else {
             return $resultRedirect->setPath('*/questionaryquestion/edit', [
-                'quiz_id' => $quizId, 'question_id'=> $questionId, '_current' => true
+                'quiz_id' => $quizId,
+                'question_id' => $questionId,
+                '_current' => true
             ]);
         }
-
     }
 }

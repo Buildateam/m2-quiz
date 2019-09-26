@@ -5,6 +5,10 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class BackButton
+ * @package Buildateam\Quiz\Block\Adminhtml\Answer\Edit
+ */
 class BackButton extends GenericButton implements ButtonProviderInterface
 {
     /**

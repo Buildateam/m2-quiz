@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer;
 
-
+/**
+ * Class NewAction
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer
+ */
 class NewAction extends \Magento\Backend\App\Action
 {
     /**
@@ -38,5 +41,4 @@ class NewAction extends \Magento\Backend\App\Action
         $resultForward = $this->resultForwardFactory->create();
         return $resultForward->forward('edit');
     }
-
 }

@@ -1,26 +1,41 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Index;
 
 use Magento\Setup\Exception;
+use \Magento\Framework\Serialize\SerializerInterface;
 
+/**
+ * Class SaveCustomerAnswers
+ * @package Buildateam\Quiz\Controller\Index
+ */
 class SaveCustomerAnswers extends \Magento\Framework\App\Action\Action
 {
     /**
      * @var \Magento\Framework\Controller\Result\JsonFactory
      */
     protected $jsonFactory;
+
     /**
      * @var \Buildateam\Quiz\Model\CustomerAnswerFactory
      */
     protected $customerAnswerFactory;
+
     /**
      * @var \Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface
      */
     protected $customerAnswerRepository;
+
     /**
      * @var \Magento\Customer\Model\Session
      */
     protected $session;
+
+    /**
+     * @var SerializerInterface
+     */
+    protected $serializer;
+
     /**
      * SaveCustomerAnswers constructor.
      * @param \Magento\Backend\App\Action\Context $context
@@ -34,8 +49,10 @@ class SaveCustomerAnswers extends \Magento\Framework\App\Action\Action
         \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
         \Buildateam\Quiz\Model\CustomerAnswerFactory $customerAnswerFactory,
         \Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface $customerAnswerRepository,
-        \Magento\Customer\Model\Session $session
+        \Magento\Customer\Model\Session $session,
+        SerializerInterface $serializer
     ) {
+        $this->serializer = $serializer;
         $this->jsonFactory = $jsonFactory;
         $this->customerAnswerFactory = $customerAnswerFactory;
         $this->customerAnswerRepository = $customerAnswerRepository;
@@ -56,7 +73,7 @@ class SaveCustomerAnswers extends \Magento\Framework\App\Action\Action
             $customerAnswer = $this->customerAnswerFactory->create();
             $customerAnswer->setData('customer_id', $customerId);
             $customerAnswer->setData('quiz_id', $this->getRequest()->getParam('quiz'));
-            $customerAnswer->setData('answers', serialize($this->getRequest()->getParam('answers')));
+            $customerAnswer->setData('answers', $this->serializer->serialize($this->getRequest()->getParam('answers')));
             try {
                 $this->customerAnswerRepository->save($customerAnswer);
                 $response->setData('success', true);

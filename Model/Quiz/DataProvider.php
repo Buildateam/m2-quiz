@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Model\Quiz;
 
 use Buildateam\Quiz\Model\ResourceModel\Quiz\CollectionFactory;

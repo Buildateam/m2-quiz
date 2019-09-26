@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion;
 
-
+/**
+ * Class Delete
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion
+ */
 class Delete extends \Magento\Backend\App\Action
 {
     /**

@@ -2,6 +2,10 @@
 
 namespace Buildateam\Quiz\Block\Quiz;
 
+/**
+ * Class Modal
+ * @package Buildateam\Quiz\Block\Quiz
+ */
 class Modal extends \Magento\Framework\View\Element\Template
 {
     const BT_CUSTOMER_REGISTER = 'bt-quiz-customer-register';

@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Ui\Component\Listing\Column\QuestionType;
 
-
+/**
+ * Class InputType
+ * @package Buildateam\Quiz\Ui\Component\Listing\Column\QuestionType
+ */
 class InputType implements \Magento\Framework\Data\OptionSourceInterface
 {
 
@@ -19,11 +22,10 @@ class InputType implements \Magento\Framework\Data\OptionSourceInterface
      */
     public function toOptionArray()
     {
-        return array(
-            array("value" => "select", "label" => "select"),
-            array("value" => "text", "label" => "text"),
-            array("value" => "multiselect", "label" => "multiselect")
-        );
+        return [
+            ["value" => "select", "label" => "select"],
+            ["value" => "text", "label" => "text"],
+            ["value" => "multiselect", "label" => "multiselect"]
+        ];
     }
-
 }

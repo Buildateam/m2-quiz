@@ -12,12 +12,17 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class BackButton
+ * @package Buildateam\Quiz\Block\Adminhtml\QuestionaryAnswer\Edit
+ */
 class BackButton extends GenericButton implements ButtonProviderInterface
 {
     /**
      * @var \Buildateam\Quiz\Model\QuestionRepository
      */
     protected $questionRepository;
+
     /**
      * BackButton constructor.
      * @param \Buildateam\Quiz\Model\QuestionRepository $questionRepository
@@ -45,6 +50,7 @@ class BackButton extends GenericButton implements ButtonProviderInterface
             'sort_order' => 10
         ];
     }
+
     /**
      * Get URL for back (reset) button
      *
@@ -62,10 +68,11 @@ class BackButton extends GenericButton implements ButtonProviderInterface
         }
         if ($question) {
             return $this->getUrl('quiz/questionaryquestion/edit/', [
-                'question_id' => $question->getId(), 'quiz_id' => $question->getData('quiz_id')]);
+                'question_id' => $question->getId(),
+                'quiz_id' => $question->getData('quiz_id')
+            ]);
         } else {
             return $this->getUrl('quiz/questionary/index/');
         }
     }
-
 }

@@ -1,9 +1,14 @@
 <?php
+
 namespace Buildateam\Quiz\Block\Adminhtml\Question\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class Delete
+ * @package Buildateam\Quiz\Block\Adminhtml\Question\Edit
+ */
 class Delete extends GenericButton implements ButtonProviderInterface
 {
     /**

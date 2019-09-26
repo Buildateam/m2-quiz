@@ -1,12 +1,18 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Customer\Answer;
 
+/**
+ * Class Index
+ * @package Buildateam\Quiz\Controller\Adminhtml\Customer\Answer
+ */
 class Index extends \Magento\Backend\App\Action
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $resultPageFactory;
+
     /**
      * Index constructor.
      * @param \Magento\Backend\App\Action\Context $context

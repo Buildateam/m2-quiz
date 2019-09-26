@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Model;
 
 /**
@@ -84,7 +85,7 @@ class ImageUploader
         $this->logger = $logger;
         $this->baseTmpPath = 'quiz/tmp';
         $this->basePath = 'quiz';
-        $this->allowedExtensions = ['jpg','jpeg','gif', 'png'];
+        $this->allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
     }
 
     /**

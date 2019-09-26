@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Index;
 
+/**
+ * Class NewAction
+ * @package Buildateam\Quiz\Controller\Adminhtml\Index
+ */
 class NewAction extends \Magento\Backend\App\Action
 {
 
@@ -8,6 +13,7 @@ class NewAction extends \Magento\Backend\App\Action
      * @var \Magento\Backend\Model\View\Result\ForwardFactory
      */
     protected $resultForwardFactory;
+
     /**
      * NewAction constructor.
      * @param \Magento\Backend\App\Action\Context $context
@@ -20,6 +26,7 @@ class NewAction extends \Magento\Backend\App\Action
         $this->resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
     }
+
     /**
      * {@inheritdoc}
      */

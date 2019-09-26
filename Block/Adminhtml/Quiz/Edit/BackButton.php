@@ -1,9 +1,14 @@
 <?php
+
 namespace Buildateam\Quiz\Block\Adminhtml\Quiz\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Buildateam\Quiz\Block\Adminhtml\GenericButton;
 
+/**
+ * Class BackButton
+ * @package Buildateam\Quiz\Block\Adminhtml\Quiz\Edit
+ */
 class BackButton extends GenericButton implements ButtonProviderInterface
 {
     /**
@@ -18,6 +23,7 @@ class BackButton extends GenericButton implements ButtonProviderInterface
             'sort_order' => 10
         ];
     }
+
     /**
      * Get URL for back (reset) button
      *

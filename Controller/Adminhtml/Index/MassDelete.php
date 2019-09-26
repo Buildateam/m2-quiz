@@ -1,4 +1,5 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Index;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -6,6 +7,10 @@ use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Buildateam\Quiz\Model\ResourceModel\Quiz\CollectionFactory;
 
+/**
+ * Class MassDelete
+ * @package Buildateam\Quiz\Controller\Adminhtml\Index
+ */
 class MassDelete extends \Magento\Backend\App\Action
 {
     /**
@@ -20,6 +25,7 @@ class MassDelete extends \Magento\Backend\App\Action
      * @var \Buildateam\Quiz\Model\QuizRepository
      */
     protected $quizRepository;
+
     /**
      * MassDelete constructor.
      * @param Context $context

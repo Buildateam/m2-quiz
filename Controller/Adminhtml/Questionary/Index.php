@@ -8,9 +8,12 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\Questionary;
 
-
 use Magento\Framework\App\ResponseInterface;
 
+/**
+ * Class Index
+ * @package Buildateam\Quiz\Controller\Adminhtml\Questionary
+ */
 class Index extends \Magento\Backend\App\Action
 {
     /**

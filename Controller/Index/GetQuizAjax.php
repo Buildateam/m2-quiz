@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Index;
 
+/**
+ * Class GetQuizAjax
+ * @package Buildateam\Quiz\Controller\Index
+ */
 class GetQuizAjax extends \Magento\Framework\App\Action\Action
 {
     /**
@@ -25,6 +30,7 @@ class GetQuizAjax extends \Magento\Framework\App\Action\Action
      * @var \Buildateam\Quiz\Model\ResourceModel\Answer\CollectionFactory
      */
     protected $collectionAnswerFactory;
+
     /**
      * GetQuizAjax constructor.
      * @param \Magento\Backend\App\Action\Context $context
@@ -72,7 +78,7 @@ class GetQuizAjax extends \Magento\Framework\App\Action\Action
                 );
             }
             $path = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
-            $path = $path.'quiz/';
+            $path = $path . 'quiz/';
             $quizQuestions = [
                 'info' => [
                     'name' => $quiz->getData('title'),
@@ -87,24 +93,24 @@ class GetQuizAjax extends \Magento\Framework\App\Action\Action
             /** @var \Buildateam\Quiz\Model\Question $question */
             foreach ($collectionQuestion as $question) {
                 $quizQuestions['questions'][$question->getId()] = [
-                    'id'            => $question->getId(),
-                    'q'             => $question->getData('title'),
-                    'multiple'      => (boolean)$question->getData('multiple'),
-                    'sort'          => $question->getData('sort'),
-                    'a'             => []
+                    'id' => $question->getId(),
+                    'q' => $question->getData('title'),
+                    'multiple' => (boolean)$question->getData('multiple'),
+                    'sort' => $question->getData('sort'),
+                    'a' => []
                 ];
                 /** \Buildateam\Quiz\Model\ResourceModel\Answer\Collection $collectionAnswer */
                 $collectionAnswer = $this->collectionAnswerFactory->create();
                 /** @var \Buildateam\Quiz\Model\Answer $answer */
                 foreach ($collectionAnswer->getByQuestionId($question->getId()) as $answer) {
                     $quizQuestions['questions'][$question->getId()]['a'][] = [
-                        'id'        => $answer->getId(),
-                        'type'      => $question->getData('type_id'),
-                        'title'     => $answer->getData('title'),
-                        'img'       => $answer->getData('image') ? $path . $answer->getData('image') : '',
-                        'color'     => $answer->getData('color'),
-                        'relation'  => $answer->getData('relation_id'),
-                        'sort'      => $answer->getData('sort')
+                        'id' => $answer->getId(),
+                        'type' => $question->getData('type_id'),
+                        'title' => $answer->getData('title'),
+                        'img' => $answer->getData('image') ? $path . $answer->getData('image') : '',
+                        'color' => $answer->getData('color'),
+                        'relation' => $answer->getData('relation_id'),
+                        'sort' => $answer->getData('sort')
                     ];
                 }
             }

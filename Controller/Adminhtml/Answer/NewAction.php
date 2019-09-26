@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Answer;
 
+/**
+ * Class NewAction
+ * @package Buildateam\Quiz\Controller\Adminhtml\Answer
+ */
 class NewAction extends \Magento\Backend\App\Action
 {
     /**

@@ -1,7 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Question\Type;
 
-
+/**
+ * Class Edit
+ * @package Buildateam\Quiz\Controller\Adminhtml\Question\Type
+ */
 class Edit extends \Magento\Backend\App\Action
 {
     /**
@@ -16,6 +20,7 @@ class Edit extends \Magento\Backend\App\Action
      * @var \Buildateam\Quiz\Model\QuestionTypeRepository
      */
     protected $questionTypeRepository;
+
     /**
      * Edit constructor.
      * @param \Magento\Backend\App\Action\Context $context

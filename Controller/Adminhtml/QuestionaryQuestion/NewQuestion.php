@@ -10,6 +10,10 @@ namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion;
 
 use Magento\Backend\App\Action;
 
+/**
+ * Class NewQuestion
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryQuestion
+ */
 class NewQuestion extends Action
 {
     protected $_resultForwardFactory;
@@ -27,5 +31,4 @@ class NewQuestion extends Action
         $resultForward = $this->_resultForwardFactory->create();
         return $resultForward->forward('edit');
     }
-
 }

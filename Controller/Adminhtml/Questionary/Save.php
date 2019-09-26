@@ -8,8 +8,11 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\Questionary;
 
-
-class Save  extends \Magento\Backend\App\Action
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Controller\Adminhtml\Questionary
+ */
+class Save extends \Magento\Backend\App\Action
 {
     /**
      * @var \Buildateam\Quiz\Model\QuizRepository
@@ -77,11 +80,10 @@ class Save  extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('Error saving the questionary.'));
             }
         }
-        if($quizId && isset($data['back']) && $data['back'] == 'edit') {
+        if ($quizId && isset($data['back']) && $data['back'] == 'edit') {
             return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId]);
         } else {
             return $resultRedirect->setPath('*/*/index');
         }
     }
-
 }

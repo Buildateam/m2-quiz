@@ -8,12 +8,17 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\Questionary;
 
+/**
+ * Class Delete
+ * @package Buildateam\Quiz\Controller\Adminhtml\Questionary
+ */
 class Delete extends \Magento\Backend\App\Action
 {
     /**
      * @var \Buildateam\Quiz\Model\QuizRepository
      */
     protected $quizRepository;
+
     /**
      * Delete constructor.
      * @param \Magento\Backend\App\Action\Context $context

@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Block\Adminhtml;
 
+/**
+ * Class GenericButton
+ * @package Buildateam\Quiz\Block\Adminhtml
+ */
 class GenericButton
 {
     /**
@@ -41,8 +46,8 @@ class GenericButton
     /**
      * Generate url by route and parameters
      *
-     * @param   string $route
-     * @param   array $params
+     * @param string $route
+     * @param array $params
      * @return  string
      */
     public function getUrl($route = '', $params = [])

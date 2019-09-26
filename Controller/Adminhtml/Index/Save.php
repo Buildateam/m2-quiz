@@ -1,6 +1,11 @@
 <?php
+
 namespace Buildateam\Quiz\Controller\Adminhtml\Index;
 
+/**
+ * Class Save
+ * @package Buildateam\Quiz\Controller\Adminhtml\Index
+ */
 class Save extends \Magento\Backend\App\Action
 {
     /**
@@ -69,7 +74,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage(__('Error saving the quiz.'));
             }
         }
-        if($quizId && isset($data['back']) && $data['back'] == 'edit') {
+        if ($quizId && isset($data['back']) && $data['back'] == 'edit') {
             return $resultRedirect->setPath('*/*/edit', ['quiz_id' => $quizId]);
         } else {
             return $resultRedirect->setPath('*/*/index');

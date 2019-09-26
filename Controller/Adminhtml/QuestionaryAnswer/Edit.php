@@ -8,7 +8,10 @@
 
 namespace Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer;
 
-
+/**
+ * Class Edit
+ * @package Buildateam\Quiz\Controller\Adminhtml\QuestionaryAnswer
+ */
 class Edit extends \Magento\Backend\App\Action
 {
     /**
@@ -65,5 +68,4 @@ class Edit extends \Magento\Backend\App\Action
             ->prepend($id ? __('Edit Answer') : __('New Answer'));
         return $resultPage;
     }
-
 }

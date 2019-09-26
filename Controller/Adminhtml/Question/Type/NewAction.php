@@ -3,6 +3,10 @@ namespace Buildateam\Quiz\Controller\Adminhtml\Question\Type;
 
 use Magento\Backend\App\Action;
 
+/**
+ * Class NewAction
+ * @package Buildateam\Quiz\Controller\Adminhtml\Question\Type
+ */
 class NewAction extends Action
 {
     protected $_resultForwardFactory;
