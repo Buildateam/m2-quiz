@@ -11,7 +11,7 @@ use Magento\Backend\App\Action;
 class Delete extends Action
 {
     /**
-     * @var \Buildateam\Quiz\Model\AnswerFactory
+     * @var \Buildateam\Quiz\Model\ResourceModel\Answer\CollectionFactory
      */
     protected $answerFactory;
     /**
@@ -26,13 +26,13 @@ class Delete extends Action
     /**
      * Delete constructor.
      * @param Action\Context $context
-     * @param \Buildateam\Quiz\Model\AnswerFactory $answerFactory
+     * @param \Buildateam\Quiz\Model\ResourceModel\Answer\CollectionFactory $answerFactory
      * @param \Buildateam\Quiz\Model\ResourceModel\Answer $resourceAnswer
      * @param \Magento\Framework\Filesystem $filesystem
      */
     public function __construct(
         Action\Context $context,
-        \Buildateam\Quiz\Model\AnswerFactory $answerFactory,
+        \Buildateam\Quiz\Model\ResourceModel\Answer\CollectionFactory $answerFactory,
         \Buildateam\Quiz\Model\ResourceModel\Answer $resourceAnswer,
         \Magento\Framework\Filesystem $filesystem
     ) {
@@ -54,18 +54,19 @@ class Delete extends Action
             return $resultRedirect->setPath('*/index/');
         }
         try {
+            $answerCollection = $this->answerFactory->create();
             /** @var \Buildateam\Quiz\Model\Answer $answerModel */
-            $answerModel = $this->answerFactory->create();
-            $answerModel = $this->resourceAnswer->load($answerModel, $id);
-            $questionId = $answerModel->getData('question_id');
-            if ($answerModel->getData('image')) {
+            $answerModel = $answerCollection->addFieldToFilter('entity_id', $id)->getFirstItem();
+            $items = $answerModel->getData();
+            $questionId = $items['question_id'];
+            if ($items['image']) {
                 $this->filesystem
                     ->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)
-                    ->delete('quiz/' . $answerModel->getData('image'));
+                    ->delete('quiz/' . $items['image']);
             }
             $this->resourceAnswer->delete($answerModel);
             $this->messageManager->addSuccessMessage(__('Answer deleted'));
-            return $resultRedirect->setPath('*/question/edit', ['id' => $questionId]);
+            return $resultRedirect->setPath('*/question/edit', ['question_id' => $questionId]);
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
             return $resultRedirect->setPath('*/answer/edit', ['id' => $id]);

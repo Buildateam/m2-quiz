@@ -52,7 +52,7 @@ class QuizQuestionTypeActions extends Column
                 ];
                 $item[$this->getData('name')]['delete'] = [
                     'href' => $this->urlBuilder->getUrl(
-                        'quiz/index/delete',
+                        'quiz/question_type/delete',
                         ['id' => $item['entity_id']]
                     ),
                     'label' => __('Delete'),
