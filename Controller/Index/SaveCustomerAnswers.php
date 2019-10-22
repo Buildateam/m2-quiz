@@ -2,54 +2,62 @@
 
 namespace Buildateam\Quiz\Controller\Index;
 
-use Magento\Setup\Exception;
-use \Magento\Framework\Serialize\SerializerInterface;
+use Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface;
+use Buildateam\Quiz\Model\CustomerAnswer;
+use Buildateam\Quiz\Model\CustomerAnswerFactory;
+use Magento\Backend\App\Action\Context;
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\DataObject;
+use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Class SaveCustomerAnswers
  * @package Buildateam\Quiz\Controller\Index
  */
-class SaveCustomerAnswers extends \Magento\Framework\App\Action\Action
+class SaveCustomerAnswers extends Action
 {
     /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory
+     * @var JsonFactory
      */
-    protected $jsonFactory;
+    private $jsonFactory;
 
     /**
-     * @var \Buildateam\Quiz\Model\CustomerAnswerFactory
+     * @var CustomerAnswerFactory
      */
-    protected $customerAnswerFactory;
+    private $customerAnswerFactory;
 
     /**
-     * @var \Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface
+     * @var CustomerAnswerRepositoryInterface
      */
-    protected $customerAnswerRepository;
+    private $customerAnswerRepository;
 
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
-    protected $session;
+    private $session;
 
     /**
      * @var SerializerInterface
      */
-    protected $serializer;
+    private $serializer;
 
     /**
      * SaveCustomerAnswers constructor.
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Controller\Result\JsonFactory $jsonFactory
-     * @param \Buildateam\Quiz\Model\CustomerAnswerFactory $customerAnswerFactory
-     * @param \Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface $customerAnswerRepository
-     * @param \Magento\Customer\Model\Session $session
+     * @param Context $context
+     * @param JsonFactory $jsonFactory
+     * @param CustomerAnswerFactory $customerAnswerFactory
+     * @param CustomerAnswerRepositoryInterface $customerAnswerRepository
+     * @param Session $session
+     * @param SerializerInterface $serializer
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $jsonFactory,
-        \Buildateam\Quiz\Model\CustomerAnswerFactory $customerAnswerFactory,
-        \Buildateam\Quiz\Api\CustomerAnswerRepositoryInterface $customerAnswerRepository,
-        \Magento\Customer\Model\Session $session,
+        Context $context,
+        JsonFactory $jsonFactory,
+        CustomerAnswerFactory $customerAnswerFactory,
+        CustomerAnswerRepositoryInterface $customerAnswerRepository,
+        Session $session,
         SerializerInterface $serializer
     ) {
         $this->serializer = $serializer;
@@ -63,13 +71,13 @@ class SaveCustomerAnswers extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $resultJson = $this->jsonFactory->create();
-        $response = new \Magento\Framework\DataObject();
+        $response = new DataObject();
         if ($this->getRequest()->getParam('quiz') && $this->getRequest()->getParam('answers')) {
             $customerId = null;
             if ($this->session->isLoggedIn()) {
                 $customerId = $this->session->getCustomerId();
             }
-            /** @var \Buildateam\Quiz\Model\CustomerAnswer $customerAnswer */
+            /** @var CustomerAnswer $customerAnswer */
             $customerAnswer = $this->customerAnswerFactory->create();
             $customerAnswer->setData('customer_id', $customerId);
             $customerAnswer->setData('quiz_id', $this->getRequest()->getParam('quiz'));

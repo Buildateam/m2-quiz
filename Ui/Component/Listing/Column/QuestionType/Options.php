@@ -2,11 +2,16 @@
 
 namespace Buildateam\Quiz\Ui\Component\Listing\Column\QuestionType;
 
+use Buildateam\Quiz\Model\Question\Type;
+use Buildateam\Quiz\Model\ResourceModel\Question\Type\Collection;
+use Buildateam\Quiz\Model\ResourceModel\Question\Type\CollectionFactory;
+use Magento\Framework\Data\OptionSourceInterface;
+
 /**
  * Class Options
  * @package Buildateam\Quiz\Ui\Component\Listing\Column\QuestionType
  */
-class Options implements \Magento\Framework\Data\OptionSourceInterface
+class Options implements OptionSourceInterface
 {
     /**
      * @var array
@@ -14,16 +19,16 @@ class Options implements \Magento\Framework\Data\OptionSourceInterface
     protected $options;
 
     /**
-     * @var \Buildateam\Quiz\Model\ResourceModel\Question\Type\CollectionFactory
+     * @var CollectionFactory
      */
     protected $collectionFactory;
 
     /**
      * Options constructor.
-     * @param \Buildateam\Quiz\Model\ResourceModel\Question\Type\CollectionFactory $collectionFactory
+     * @param CollectionFactory $collectionFactory
      */
     public function __construct(
-        \Buildateam\Quiz\Model\ResourceModel\Question\Type\CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory
     ) {
         $this->collectionFactory = $collectionFactory;
     }
@@ -44,16 +49,16 @@ class Options implements \Magento\Framework\Data\OptionSourceInterface
     protected function getOptions()
     {
         if ($this->options === null) {
-            /** @var \Buildateam\Quiz\Model\ResourceModel\Question\Type\Collection $collection */
+            /** @var Collection $collection */
             $collection = $this->collectionFactory->create();
-            /** @var \Buildateam\Quiz\Model\Question\Type $item */
+            /** @var Type $item */
             foreach ($collection as $item) {
                 $this->options[] = [
                     'label' => $item->getData('title'),
                     'value' => $item->getId()
                 ];
             }
-            if (count($this->options) === 0) {
+            if (empty($this->options)) {
                 $this->options[] = [
                     'label' => __('Please add a Question Type First.'),
                     'value' => ''
