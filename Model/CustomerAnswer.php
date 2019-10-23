@@ -2,13 +2,20 @@
 
 namespace Buildateam\Quiz\Model;
 
-use \Magento\Framework\Serialize\SerializerInterface;
+use Buildateam\Quiz\Model\ResourceModel\Answer\Collection;
+use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Model\ResourceModel\AbstractResource;
+use Magento\Framework\Registry;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class CustomerAnswer
  * @package Buildateam\Quiz\Model
  */
-class CustomerAnswer extends \Magento\Framework\Model\AbstractModel
+class CustomerAnswer extends AbstractModel
 {
     const ANSWER_ID = 'entity_id';
 
@@ -30,36 +37,37 @@ class CustomerAnswer extends \Magento\Framework\Model\AbstractModel
     /**
      * @var ResourceModel\Answer\Collection
      */
-    protected $answerCollection;
+    private $answerCollection;
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
-    protected $storeManager;
+    private $storeManager;
 
     /**
      * @var SerializerInterface
      */
-    protected $serializer;
+    private $serializer;
 
     /**
      * CustomerAnswer constructor.
-     * @param \Magento\Framework\Model\Context $context
-     * @param \Magento\Framework\Registry $registry
+     * @param Context $context
+     * @param Registry $registry
      * @param ResourceModel\Answer\Collection $answerCollection
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
-     * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
+     * @param StoreManagerInterface $storeManager
+     * @param SerializerInterface $serializer
+     * @param AbstractResource|null $resource
+     * @param AbstractDb|null $resourceCollection
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Buildateam\Quiz\Model\ResourceModel\Answer\Collection $answerCollection,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Model\ResourceModel\AbstractResource $resource,
-        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection,
+        Context $context,
+        Registry $registry,
+        Collection $answerCollection,
+        StoreManagerInterface $storeManager,
         SerializerInterface $serializer,
+        AbstractResource $resource = null,
+        AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->serializer = $serializer;
@@ -70,7 +78,7 @@ class CustomerAnswer extends \Magento\Framework\Model\AbstractModel
 
     protected function _construct()
     {
-        $this->_init(\Buildateam\Quiz\Model\ResourceModel\CustomerAnswer::class);
+        $this->_init(ResourceModel\CustomerAnswer::class);
     }
 
     /**

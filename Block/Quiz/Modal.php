@@ -2,6 +2,14 @@
 
 namespace Buildateam\Quiz\Block\Quiz;
 
+use Buildateam\Quiz\Model\QuizRepository;
+use Buildateam\Quiz\Model\ResourceModel\Quiz\CollectionFactory;
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Http\Context as HttpContext;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Stdlib\CookieManagerInterface;
+use Magento\Framework\View\Element\Template\Context;
+
 /**
  * Class Modal
  * @package Buildateam\Quiz\Block\Quiz
@@ -11,38 +19,49 @@ class Modal extends \Magento\Framework\View\Element\Template
     const BT_CUSTOMER_REGISTER = 'bt-quiz-customer-register';
     const BT_QUIZ_MODAL = 'bt-quiz-modal';
     const QUIZ_CONFIG_ID = 'buildateam_quiz/general/used_quiz';
+
     /**
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
-    protected $customerSession;
+    private $customerSession;
+
     /**
-     * @var \Magento\Framework\App\Http\Context
+     * @var HttpContext
      */
-    protected $httpContext;
+    private $httpContext;
+
     /**
-     * @var \Magento\Framework\Stdlib\CookieManagerInterface
+     * @var CookieManagerInterface
      */
-    protected $cookieManager;
+    private $cookieManager;
+
     /**
-     * @var \Buildateam\Quiz\Model\ResourceModel\Quiz\CollectionFactory
+     * @var CollectionFactory
      */
-    protected $quizCollectionFactory;
+    private $quizCollectionFactory;
+
+    /**
+     * @var QuizRepository
+     */
+    private $quizRepository;
 
     /**
      * Modal constructor.
-     * @param \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager
-     * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Framework\App\Http\Context $httpContext
-     * @param \Buildateam\Quiz\Model\ResourceModel\Quiz\CollectionFactory $quizResource
+     * @param CookieManagerInterface $cookieManager
+     * @param Session $customerSession
+     * @param Context $context
+     * @param HttpContext $httpContext
+     * @param CollectionFactory $quizCollectionFactory
+     * @param QuizRepository $quizRepository
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
-        \Magento\Customer\Model\Session $customerSession,
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\App\Http\Context $httpContext,
-        \Buildateam\Quiz\Model\ResourceModel\Quiz\CollectionFactory $quizCollectionFactory,
+        CookieManagerInterface $cookieManager,
+        Session $customerSession,
+        Context $context,
+        HttpContext $httpContext,
+        CollectionFactory $quizCollectionFactory,
+        QuizRepository $quizRepository,
         array $data = []
     ) {
         $this->customerSession = $customerSession;
@@ -50,6 +69,7 @@ class Modal extends \Magento\Framework\View\Element\Template
         $this->httpContext = $httpContext;
         $this->quizCollectionFactory = $quizCollectionFactory;
         $this->_isScopePrivate = true;
+        $this->quizRepository = $quizRepository;
         parent::__construct($context, $data);
     }
 
@@ -83,7 +103,14 @@ class Modal extends \Magento\Framework\View\Element\Template
      */
     public function getQuizId()
     {
-        $id = $this->_scopeConfig->getValue(self::QUIZ_CONFIG_ID);
+        if ($id = $this->_scopeConfig->getValue(self::QUIZ_CONFIG_ID)) {
+            try {
+                $this->quizRepository->getById($id);
+            } catch (NoSuchEntityException $e) {
+                $id = null;
+            }
+        }
+
         if (!$id) {
             // return last inserted id in case if no id in store config
             try {
