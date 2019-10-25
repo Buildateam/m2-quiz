@@ -31,7 +31,7 @@ class Delete extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('id');
+        $id = $this->getRequest()->getParam('question_id');
         $quizId = $this->getRequest()->getParam('quiz_id');
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id == null || empty($id)) {
@@ -44,7 +44,7 @@ class Delete extends \Magento\Backend\App\Action
             return $resultRedirect->setPath('*/index/edit', ['quiz_id' => $quizId]);
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
-            return $resultRedirect->setPath('*/question/edit', ['id' => $id]);
+            return $resultRedirect->setPath('*/question/edit', ['question_id' => $id]);
         }
     }
 }
