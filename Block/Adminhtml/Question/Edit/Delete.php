@@ -36,6 +36,6 @@ class Delete extends GenericButton implements ButtonProviderInterface
     public function getDeleteUrl()
     {
         $questionId = $this->registry->registry('buildateam_quiz_question')->getId();
-        return $this->getUrl('*/*/delete', ['id' => $questionId]);
+        return $this->getUrl('*/*/delete', ['question_id' => $questionId]);
     }
 }
