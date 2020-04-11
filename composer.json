@@ -1,6 +1,9 @@
 {
   "name": "buildateam/m2-quiz",
   "description": "Quiz for Magento 2. Advanced Search Reimagined. Offer Quizzes on your storefront. Engage customers. Collect information about their preferences. Offer products matching the quiz results.",
+  "require": {
+        "magento/framework": "101.0.*||102.0.*"
+    },
   "type": "magento2-module",
   "version": "1.0.7",
   "license": [
